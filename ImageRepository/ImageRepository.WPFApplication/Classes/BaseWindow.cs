@@ -34,6 +34,7 @@ namespace ImageRepository.WPFApplication.Classes
                 this.FontFamily = Application.Current.Resources["MaterialDesignFont"] as FontFamily;
 
                 this.WindowStyle = WindowStyle.None;
+                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
             catch (Exception ex)
             {
