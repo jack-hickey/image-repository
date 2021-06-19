@@ -8,12 +8,13 @@
     xmlns:local="clr-namespace:ImageRepository.WPFApplication.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="LandingPage"
+    WindowState="Maximized"
     Width="800"
     Height="450"
     mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical">
-        <controls:TitleBar />
+        <controls:TitleBar Title="Image Repository" />
 
         <Grid />
     </StackPanel>

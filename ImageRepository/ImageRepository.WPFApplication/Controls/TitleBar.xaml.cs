@@ -29,6 +29,14 @@ namespace ImageRepository.WPFApplication.Controls
             set => SetValue(WindowProperty, value);
         }
 
+        public static DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(TitleBar), new PropertyMetadata(""));
+
+        public string Title
+        {
+            get => GetValue(TitleProperty).ToString();
+            set => SetValue(TitleProperty, value);
+        }
+
         public TitleBar()
         {
             try

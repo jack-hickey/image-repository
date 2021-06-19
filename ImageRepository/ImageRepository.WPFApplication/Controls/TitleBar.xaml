@@ -7,71 +7,91 @@
     xmlns:local="clr-namespace:ImageRepository.WPFApplication.Controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Height="{Binding Source={x:Static SystemParameters.WindowCaptionHeight}}"
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
     <UserControl.Resources>
         <converters:WindowStateToIconConverter x:Key="StateToIcon" />
     </UserControl.Resources>
 
-    <StackPanel HorizontalAlignment="Right">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-            <Button
-                Width="Auto"
-                ToolTip="Minimize"
-                MaxHeight="{Binding Source={x:Static SystemParameters.WindowCaptionHeight}}"
-                Padding="10,0,10,0"
-                materialDesign:RippleAssist.ClipToBounds="True"
-                Click="Button_Click"
-                Style="{DynamicResource MaterialDesignToolForegroundButton}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
-                <materialDesign:PackIcon
-                    Width="16"
-                    Height="16"
-                    VerticalAlignment="Center"
-                    Kind="WindowMinimize" />
-            </Button>
+        <StackPanel
+            Margin="11,11,0,0"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <materialDesign:PackIcon
+                Width="42"
+                Height="42"
+                VerticalAlignment="Center"
+                Kind="Images" />
 
-            <Button
-                x:Name="btnRestore"
-                Grid.Column="1"
-                Width="Auto"
-                ToolTip="Maximize"
-                MaxHeight="{Binding Source={x:Static SystemParameters.WindowCaptionHeight}}"
-                Padding="10,0,10,0"
-                materialDesign:RippleAssist.ClipToBounds="True"
-                Click="Button_Click_2"
-                Style="{DynamicResource MaterialDesignToolForegroundButton}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
-                <materialDesign:PackIcon
-                    Width="16"
-                    Height="16"
-                    VerticalAlignment="Center"
-                    Kind="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:TitleBar}, Path=MyWindow.WindowState, Converter={StaticResource StateToIcon}}" />
-            </Button>
+            <TextBlock
+                Margin="11,0,0,0"
+                VerticalAlignment="Center"
+                Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
+                Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:TitleBar}, Path=Title}" />
+        </StackPanel>
 
-            <Button
-                Grid.Column="2"
-                Width="Auto"
-                ToolTip="Close"
-                MaxHeight="{Binding Source={x:Static SystemParameters.WindowCaptionHeight}}"
-                Padding="10,0,10,0"
-                materialDesign:RippleAssist.ClipToBounds="True"
-                Click="Button_Click_1"
-                Style="{DynamicResource MaterialDesignToolForegroundButton}"
-                WindowChrome.IsHitTestVisibleInChrome="True">
-                <materialDesign:PackIcon
-                    Width="16"
-                    Height="16"
-                    VerticalAlignment="Center"
-                    Kind="WindowClose" />
-            </Button>
-        </Grid>
-    </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Height="Auto"
+                    Padding="10,5,10,5"
+                    materialDesign:RippleAssist.ClipToBounds="True"
+                    Click="Button_Click"
+                    Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                    ToolTip="Minimize"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                    <materialDesign:PackIcon
+                        Width="20"
+                        Height="20"
+                        VerticalAlignment="Center"
+                        Kind="WindowMinimize" />
+                </Button>
+
+                <Button
+                    x:Name="btnRestore"
+                    Grid.Column="1"
+                    Height="Auto"
+                    Padding="10,5,10,5"
+                    materialDesign:RippleAssist.ClipToBounds="True"
+                    Click="Button_Click_2"
+                    Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                    ToolTip="Maximize"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                    <materialDesign:PackIcon
+                        Width="20"
+                        Height="20"
+                        VerticalAlignment="Center"
+                        Kind="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:TitleBar}, Path=MyWindow.WindowState, Converter={StaticResource StateToIcon}}" />
+                </Button>
+
+                <Button
+                    Grid.Column="2"
+                    Height="Auto"
+                    Padding="10,5,10,5"
+                    materialDesign:RippleAssist.ClipToBounds="True"
+                    Click="Button_Click_1"
+                    Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                    ToolTip="Close"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                    <materialDesign:PackIcon
+                        Width="20"
+                        Height="20"
+                        VerticalAlignment="Center"
+                        Kind="WindowClose" />
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
 </UserControl>

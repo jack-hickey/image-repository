@@ -39,16 +39,26 @@ namespace ImageRepository.WPFApplication.Classes
                 this.WindowStyle = WindowStyle.None;
                 this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-                this.StateChanged += (_, __) =>
-                {
-                    this.Padding = this.WindowState == WindowState.Maximized
-                        ? new Thickness(SystemParameters.WindowResizeBorderThickness.Top + 3)
-                        : new Thickness(0);
-                };
+                this.StateChanged += (_, __) => { this.UpdatePadding(); };
+                this.Initialized += (_, __) => { this.UpdatePadding(); };
             }
             catch (Exception ex)
             {
                 throw new Exception($"An error occurred creating instance: {ex}", ex);
+            }
+        }
+
+        private void UpdatePadding()
+        {
+            try
+            {
+                this.Padding = this.WindowState == WindowState.Maximized
+                        ? new Thickness(SystemParameters.WindowResizeBorderThickness.Top + 3)
+                        : new Thickness(0);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred updating padding: {ex}");
             }
         }
     }
