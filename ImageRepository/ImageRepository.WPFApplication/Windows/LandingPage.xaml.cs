@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageRepository.WPFApplication.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace ImageRepository.WPFApplication.Windows
     /// <summary>
     /// Interaction logic for LandingPage.xaml
     /// </summary>
-    public partial class LandingPage : Window
+    public partial class LandingPage : BaseWindow
     {
         public LandingPage()
         {
