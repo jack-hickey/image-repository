@@ -20,7 +20,8 @@ namespace ImageRepository.WPFApplication.Classes
                 {
                     CornerRadius = SystemParameters.WindowCornerRadius,
                     CaptionHeight = SystemParameters.CaptionHeight,
-                    GlassFrameThickness = SystemParameters.WindowResizeBorderThickness
+                    ResizeBorderThickness = SystemParameters.WindowResizeBorderThickness,
+                    GlassFrameThickness = new Thickness(1)
                 });
 
                 TextElement.SetForeground(this, Application.Current.Resources["MaterialDesignBody"] as Brush);
@@ -33,8 +34,17 @@ namespace ImageRepository.WPFApplication.Classes
                 this.Background = Application.Current.Resources["MaterialDesignPaper"] as Brush;
                 this.FontFamily = Application.Current.Resources["MaterialDesignFont"] as FontFamily;
 
+                this.Style = Application.Current.Resources["SmartWindow"] as Style;
+
                 this.WindowStyle = WindowStyle.None;
                 this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+                this.StateChanged += (_, __) =>
+                {
+                    this.Padding = this.WindowState == WindowState.Maximized
+                        ? new Thickness(SystemParameters.WindowResizeBorderThickness.Top + 3)
+                        : new Thickness(0);
+                };
             }
             catch (Exception ex)
             {
