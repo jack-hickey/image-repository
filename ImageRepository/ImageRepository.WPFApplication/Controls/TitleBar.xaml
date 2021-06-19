@@ -24,6 +24,7 @@
 
             <Button
                 Width="Auto"
+                ToolTip="Minimize"
                 MaxHeight="{Binding Source={x:Static SystemParameters.WindowCaptionHeight}}"
                 Padding="10,0,10,0"
                 materialDesign:RippleAssist.ClipToBounds="True"
@@ -38,8 +39,10 @@
             </Button>
 
             <Button
+                x:Name="btnRestore"
                 Grid.Column="1"
                 Width="Auto"
+                ToolTip="Maximize"
                 MaxHeight="{Binding Source={x:Static SystemParameters.WindowCaptionHeight}}"
                 Padding="10,0,10,0"
                 materialDesign:RippleAssist.ClipToBounds="True"
@@ -56,6 +59,7 @@
             <Button
                 Grid.Column="2"
                 Width="Auto"
+                ToolTip="Close"
                 MaxHeight="{Binding Source={x:Static SystemParameters.WindowCaptionHeight}}"
                 Padding="10,0,10,0"
                 materialDesign:RippleAssist.ClipToBounds="True"

@@ -77,10 +77,12 @@ namespace ImageRepository.WPFApplication.Controls
                 if (this.MyWindow.WindowState == WindowState.Maximized)
                 {
                     SystemCommands.RestoreWindow(this.MyWindow);
+                    this.btnRestore.ToolTip = "Maximize";
                 }
                 else
                 {
                     SystemCommands.MaximizeWindow(this.MyWindow);
+                    this.btnRestore.ToolTip = "Restore";
                 }
             }
             catch (Exception ex)
