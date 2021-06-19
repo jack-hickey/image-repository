@@ -5,3 +5,4 @@
 /.vs
 /ImageRepository/.vs/ImageRepository/v16
 /ImageRepository/ImageRepository.WPFApplication/obj
+/ImageRepository/ImageRepository.WPFApplication/bin/Debug/net5.0-windows
