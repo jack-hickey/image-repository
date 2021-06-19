@@ -1,4 +1,5 @@
 ﻿using ImageRepository.WPFApplication.Classes;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,21 @@ namespace ImageRepository.WPFApplication.Windows
         public LandingPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Constants.ImagePrompt.ShowDialog() ?? false)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Globals.HandleError(ex);
+            }
         }
     }
 }
