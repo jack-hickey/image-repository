@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,10 @@ namespace ImageRepository.WPFApplication.Windows
             {
                 if (Constants.ImagePrompt.ShowDialog() ?? false)
                 {
-
+                    foreach (string path in Constants.ImagePrompt.FileNames)
+                    {
+                        //Todo
+                    }
                 }
             }
             catch (Exception ex)
