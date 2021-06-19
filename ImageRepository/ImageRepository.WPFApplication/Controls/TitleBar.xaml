@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel
-            Margin="11,11,0,0"
+            Margin="22,11,0,0"
             VerticalAlignment="Center"
             Orientation="Horizontal">
             <materialDesign:PackIcon
