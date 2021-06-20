@@ -64,6 +64,8 @@ namespace ImageRepository.WPFApplication.Windows
         {
             try
             {
+                this.ugImages.Children.Clear();
+
                 List<ImageData> lstData = Repository.GetAllImages();
 
                 if (!string.IsNullOrWhiteSpace(tagName))
