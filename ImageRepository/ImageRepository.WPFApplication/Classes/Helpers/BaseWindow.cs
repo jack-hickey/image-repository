@@ -8,7 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Shell;
 
-namespace ImageRepository.WPFApplication.Classes
+namespace ImageRepository.WPFApplication.Classes.Helpers
 {
     public class BaseWindow : Window
     {
@@ -53,8 +53,8 @@ namespace ImageRepository.WPFApplication.Classes
             try
             {
                 this.Padding = this.WindowState == WindowState.Maximized
-                        ? new Thickness(SystemParameters.WindowResizeBorderThickness.Top + 3)
-                        : new Thickness(0);
+                    ? new Thickness(SystemParameters.WindowResizeBorderThickness.Top + 3)
+                    : new Thickness(0);
             }
             catch (Exception ex)
             {

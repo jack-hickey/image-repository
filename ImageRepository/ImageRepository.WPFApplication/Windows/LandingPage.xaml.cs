@@ -1,4 +1,5 @@
 ﻿using ImageRepository.WPFApplication.Classes;
+using ImageRepository.WPFApplication.Classes.Helpers;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace ImageRepository.WPFApplication.Windows
                 {
                     foreach (string path in Constants.ImagePrompt.FileNames)
                     {
-                        //Todo
+                        Repository.PostImage(new ImageData(Globals.GetFileRawData(path)));
                     }
                 }
             }

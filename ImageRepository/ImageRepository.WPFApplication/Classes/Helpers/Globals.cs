@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ImageRepository.WPFApplication.Classes
+namespace ImageRepository.WPFApplication.Classes.Helpers
 {
     public static class Globals
     {
@@ -18,7 +18,7 @@ namespace ImageRepository.WPFApplication.Classes
             }
             catch
             {
-                //If this errors we're fucked anyway
+                //We're fucked anyway
             }
         }
 

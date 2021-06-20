@@ -1,4 +1,4 @@
-﻿using ImageRepository.WPFApplication.Classes;
+﻿using ImageRepository.WPFApplication.Classes.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
