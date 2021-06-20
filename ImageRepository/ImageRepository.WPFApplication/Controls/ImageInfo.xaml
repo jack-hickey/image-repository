@@ -18,6 +18,24 @@
                     <materialDesign:PackIcon Kind="ContentCopy" />
                 </MenuItem.Icon>
             </MenuItem>
+
+            <MenuItem Header="Tags">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="Tags" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Delete">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="Delete" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Preview" Click="MenuItem_Click">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="Eye" />
+                </MenuItem.Icon>
+            </MenuItem>
         </ContextMenu>
     </UserControl.Resources>
 
@@ -30,6 +48,8 @@
 
             <Image
                 x:Name="imgImage"
+                Cursor="Hand"
+                MouseLeftButtonUp="imgImage_MouseUp"
                 VerticalAlignment="Center"
                 ContextMenu="{StaticResource menuImage}" />
 
@@ -42,6 +62,8 @@
                 </Grid.ColumnDefinitions>
 
                 <Button
+                    Height="Auto"
+                    Padding="10"
                     materialDesign:ButtonAssist.CornerRadius="0"
                     Click="Button_Click"
                     Style="{DynamicResource MaterialDesignFlatMidBgButton}"
@@ -50,12 +72,15 @@
                     <materialDesign:PackIcon
                         Width="18"
                         Height="18"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Kind="ContentCopy" />
                 </Button>
 
                 <Button
                     Grid.Column="1"
+                    Height="Auto"
+                    Padding="10"
                     materialDesign:ButtonAssist.CornerRadius="0"
                     Style="{DynamicResource MaterialDesignFlatMidBgButton}"
                     ToolTip="Tags">
@@ -63,12 +88,15 @@
                     <materialDesign:PackIcon
                         Width="18"
                         Height="18"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Kind="Tags" />
                 </Button>
 
                 <Button
                     Grid.Column="2"
+                    Height="Auto"
+                    Padding="10"
                     materialDesign:ButtonAssist.CornerRadius="0"
                     Style="{DynamicResource MaterialDesignFlatMidBgButton}"
                     ToolTip="Delete">
@@ -76,6 +104,7 @@
                     <materialDesign:PackIcon
                         Width="18"
                         Height="18"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Kind="Delete" />
                 </Button>

@@ -13,61 +13,68 @@
     Height="900"
     Loaded="BaseWindow_Loaded"
     WindowState="Maximized"
+    PreviewKeyUp="BaseWindow_PreviewKeyUp"
     mc:Ignorable="d">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <materialDesign:DialogHost x:Name="dhMain" CloseOnClickAway="True">
+        <materialDesign:DialogHost.DialogContent>
+            <Image x:Name="imgPreview" />
+        </materialDesign:DialogHost.DialogContent>
 
-        <controls:TitleBar Title="Image Repository" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1" Margin="22">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*" />
-                <ColumnDefinition Width="0.7*" />
-            </Grid.ColumnDefinitions>
+            <controls:TitleBar Title="Image Repository" />
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Margin="22">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="0.7*" />
+                </Grid.ColumnDefinitions>
 
-                <Button
-                    HorizontalAlignment="Left"
-                    materialDesign:ButtonAssist.CornerRadius="10"
-                    Click="Button_Click">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon VerticalAlignment="Center" Kind="Plus" />
+                    <Button
+                        HorizontalAlignment="Left"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Click="Button_Click">
 
-                        <TextBlock
-                            Margin="5,0,0,0"
-                            VerticalAlignment="Center"
-                            Text="New" />
-                    </StackPanel>
-                </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" Kind="Plus" />
 
-                <ScrollViewer
-                    Grid.Row="1"
-                    Margin="-22,22,0,0"
-                    VerticalScrollBarVisibility="Auto">
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="New" />
+                        </StackPanel>
+                    </Button>
 
-                    <StackPanel
-                        x:Name="pnlTags"
+                    <ScrollViewer
+                        Grid.Row="1"
+                        Margin="-22,22,0,0"
+                        VerticalScrollBarVisibility="Auto">
+
+                        <StackPanel
+                            x:Name="pnlTags"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal" />
+                    </ScrollViewer>
+                </Grid>
+
+                <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                    <UniformGrid
+                        x:Name="ugImages"
                         VerticalAlignment="Top"
-                        Orientation="Horizontal" />
+                        Columns="5" />
                 </ScrollViewer>
             </Grid>
-
-            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-                <UniformGrid
-                    x:Name="ugImages"
-                    VerticalAlignment="Top"
-                    Columns="5" />
-            </ScrollViewer>
         </Grid>
-    </Grid>
+    </materialDesign:DialogHost>
 </helpers:BaseWindow>

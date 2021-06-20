@@ -47,6 +47,19 @@ namespace ImageRepository.WPFApplication.Windows
             }
         }
 
+        public void PreviewImage(ImageSource image)
+        {
+            try
+            {
+                this.imgPreview.Source = image;
+                this.dhMain.IsOpen = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred previewing image: {ex}");
+            }
+        }
+
         private void ChangeTag(string tagName)
         {
             try
@@ -100,6 +113,23 @@ namespace ImageRepository.WPFApplication.Windows
             try
             {
                 this.UpdateTagList();
+            }
+            catch (Exception ex)
+            {
+                Globals.HandleError(ex);
+            }
+        }
+
+        private void BaseWindow_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                switch (e.Key)
+                {
+                    case Key.Escape:
+                        this.dhMain.IsOpen = false;
+                        break;
+                }
             }
             catch (Exception ex)
             {

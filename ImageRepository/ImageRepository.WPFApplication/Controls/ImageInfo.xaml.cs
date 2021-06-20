@@ -1,4 +1,5 @@
 ﻿using ImageRepository.WPFApplication.Classes.Helpers;
+using ImageRepository.WPFApplication.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -91,6 +92,30 @@ namespace ImageRepository.WPFApplication.Controls
             try
             {
                 this.CopyImage();
+            }
+            catch (Exception ex)
+            {
+                Globals.HandleError(ex);
+            }
+        }
+
+        private void imgImage_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                (Application.Current.MainWindow as LandingPage).PreviewImage(this.imgImage.Source);
+            }
+            catch (Exception ex)
+            {
+                Globals.HandleError(ex);
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                (Application.Current.MainWindow as LandingPage).PreviewImage(this.imgImage.Source);
             }
             catch (Exception ex)
             {
