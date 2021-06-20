@@ -15,10 +15,8 @@ namespace ImageRepository.WPFApplication.Classes
         {
             try
             {
-                List<ImageData> lstData = new List<ImageData>()
-                {
-                    data
-                };
+                List<ImageData> lstData = GetAllImages();
+                lstData.Add(data);
 
                 FileInfo dataFile = GetDataFile();
 
@@ -27,6 +25,20 @@ namespace ImageRepository.WPFApplication.Classes
             catch (Exception ex)
             {
                 throw new Exception($"An error occurred posting image: {ex}");
+            }
+        }
+
+        public static List<ImageData> GetAllImages()
+        {
+            try
+            {
+                FileInfo dataFile = GetDataFile();
+
+                return (List<ImageData>)JsonSerializer.Deserialize(File.ReadAllText(dataFile.FullName), typeof(List<ImageData>));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred getting all images: {ex}");
             }
         }
 
