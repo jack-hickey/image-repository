@@ -12,8 +12,8 @@
     Width="1400"
     Height="900"
     Loaded="BaseWindow_Loaded"
-    WindowState="Maximized"
     PreviewKeyUp="BaseWindow_PreviewKeyUp"
+    WindowState="Maximized"
     mc:Ignorable="d">
 
     <materialDesign:DialogHost x:Name="dhMain" CloseOnClickAway="True">
@@ -59,6 +59,7 @@
                     <ScrollViewer
                         Grid.Row="1"
                         Margin="-22,22,0,0"
+                        FocusVisualStyle="{x:Null}"
                         VerticalScrollBarVisibility="Auto">
 
                         <StackPanel
@@ -68,7 +69,10 @@
                     </ScrollViewer>
                 </Grid>
 
-                <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer
+                    Grid.Column="1"
+                    FocusVisualStyle="{x:Null}"
+                    VerticalScrollBarVisibility="Auto">
                     <UniformGrid
                         x:Name="ugImages"
                         VerticalAlignment="Top"
