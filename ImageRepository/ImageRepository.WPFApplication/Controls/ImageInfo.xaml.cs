@@ -54,7 +54,6 @@ namespace ImageRepository.WPFApplication.Controls
             try
             {
                 byte[] rawData = Convert.FromBase64String(this.CurrentImage.Data);
-
                 this.imgImage.Source = Globals.GetImage(rawData);
             }
             catch (Exception ex)
@@ -63,11 +62,35 @@ namespace ImageRepository.WPFApplication.Controls
             }
         }
 
+        private void CopyImage()
+        {
+            try
+            {
+                Clipboard.SetImage(this.imgImage.Source as BitmapSource);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred copying image: {ex}");
+            }
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
                 this.UpdateImage();
+            }
+            catch (Exception ex)
+            {
+                Globals.HandleError(ex);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.CopyImage();
             }
             catch (Exception ex)
             {

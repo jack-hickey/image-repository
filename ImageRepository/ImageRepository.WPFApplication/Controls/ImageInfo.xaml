@@ -6,19 +6,80 @@
     xmlns:local="clr-namespace:ImageRepository.WPFApplication.Controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Loaded="UserControl_Loaded"
     Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}"
-    Margin="11">
+    Margin="11"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
 
-    <materialDesign:Card>
+    <UserControl.Resources>
+        <ContextMenu x:Key="menuImage">
+            <MenuItem Click="Button_Click" Header="Copy">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="ContentCopy" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+    </UserControl.Resources>
+
+    <materialDesign:Card UniformCornerRadius="15">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Image x:Name="imgImage" />
+            <Image
+                x:Name="imgImage"
+                VerticalAlignment="Center"
+                ContextMenu="{StaticResource menuImage}" />
+
+            <Grid Grid.Row="1" Background="{DynamicResource PrimaryHueMidBrush}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    materialDesign:ButtonAssist.CornerRadius="0"
+                    Click="Button_Click"
+                    Style="{DynamicResource MaterialDesignFlatMidBgButton}"
+                    ToolTip="Copy">
+
+                    <materialDesign:PackIcon
+                        Width="18"
+                        Height="18"
+                        VerticalAlignment="Center"
+                        Kind="ContentCopy" />
+                </Button>
+
+                <Button
+                    Grid.Column="1"
+                    materialDesign:ButtonAssist.CornerRadius="0"
+                    Style="{DynamicResource MaterialDesignFlatMidBgButton}"
+                    ToolTip="Tags">
+
+                    <materialDesign:PackIcon
+                        Width="18"
+                        Height="18"
+                        VerticalAlignment="Center"
+                        Kind="Tags" />
+                </Button>
+
+                <Button
+                    Grid.Column="2"
+                    materialDesign:ButtonAssist.CornerRadius="0"
+                    Style="{DynamicResource MaterialDesignFlatMidBgButton}"
+                    ToolTip="Delete">
+
+                    <materialDesign:PackIcon
+                        Width="18"
+                        Height="18"
+                        VerticalAlignment="Center"
+                        Kind="Delete" />
+                </Button>
+            </Grid>
         </Grid>
     </materialDesign:Card>
 </UserControl>

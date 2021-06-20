@@ -62,11 +62,12 @@
                 </ScrollViewer>
             </Grid>
 
-            <UniformGrid
-                x:Name="ugImages"
-                Grid.Column="1"
-                VerticalAlignment="Top"
-                Columns="5" />
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <UniformGrid
+                    x:Name="ugImages"
+                    VerticalAlignment="Top"
+                    Columns="5" />
+            </ScrollViewer>
         </Grid>
     </Grid>
 </helpers:BaseWindow>
