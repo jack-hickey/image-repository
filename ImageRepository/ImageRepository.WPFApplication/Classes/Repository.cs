@@ -44,9 +44,9 @@ namespace ImageRepository.WPFApplication.Classes
 
                 return (List<ImageData>)JsonSerializer.Deserialize(File.ReadAllText(dataFile.FullName), typeof(List<ImageData>));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception($"An error occurred getting all images: {ex}");
+                return new List<ImageData>();
             }
         }
 

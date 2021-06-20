@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace ImageRepository.WPFApplication.Classes.Helpers
 {
+    [Serializable]
     public class ImageData
     {
         public string Data { get; set; } = "";
+
+        public string[] Tags { get; set; } = new string[] { };
 
         public ImageData(string data)
         {
