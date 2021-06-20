@@ -42,7 +42,7 @@ namespace ImageRepository.WPFApplication.Controls
             {
                 InitializeComponent();
 
-                this.CurrentImage = image;
+                CurrentImage = image;
             }
             catch (Exception ex)
             {
@@ -54,8 +54,8 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                byte[] rawData = Convert.FromBase64String(this.CurrentImage.Data);
-                this.imgImage.Source = Globals.GetImage(rawData);
+                byte[] rawData = Convert.FromBase64String(CurrentImage.Data);
+                imgImage.Source = Globals.GetImage(rawData);
             }
             catch (Exception ex)
             {
@@ -67,7 +67,7 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                Clipboard.SetImage(this.imgImage.Source as BitmapSource);
+                Clipboard.SetImage(imgImage.Source as BitmapSource);
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                this.UpdateImage();
+                UpdateImage();
             }
             catch (Exception ex)
             {
@@ -91,7 +91,7 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                this.CopyImage();
+                CopyImage();
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                (Application.Current.MainWindow as LandingPage).PreviewImage(this.imgImage.Source);
+                (Application.Current.MainWindow as LandingPage).PreviewImage(imgImage.Source);
             }
             catch (Exception ex)
             {
@@ -115,7 +115,7 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                (Application.Current.MainWindow as LandingPage).PreviewImage(this.imgImage.Source);
+                (Application.Current.MainWindow as LandingPage).PreviewImage(imgImage.Source);
             }
             catch (Exception ex)
             {

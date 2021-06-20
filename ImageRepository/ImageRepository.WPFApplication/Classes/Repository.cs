@@ -27,7 +27,7 @@ namespace ImageRepository.WPFApplication.Classes
                 }
                 else
                 {
-                    MessageBox.Show("This image is already stored in your repository!");
+                    _ = MessageBox.Show("This image is already stored in your repository!");
                 }
             }
             catch (Exception ex)
@@ -58,12 +58,14 @@ namespace ImageRepository.WPFApplication.Classes
                 string directory = Path.GetDirectoryName(fullPath);
 
                 if (!Directory.Exists(directory))
-                    Directory.CreateDirectory(directory);
+                {
+                    _ = Directory.CreateDirectory(directory);
+                }
 
                 if (!File.Exists(fullPath))
                 {
-                    using (FileStream stream = File.Create(fullPath))
-                        return new FileInfo(fullPath);
+                    using FileStream stream = File.Create(fullPath);
+                    return new FileInfo(fullPath);
                 }
                 else
                 {

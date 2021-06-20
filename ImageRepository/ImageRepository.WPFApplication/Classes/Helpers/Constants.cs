@@ -9,7 +9,7 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
 {
     public static class Constants
     {
-        public static OpenFileDialog ImagePrompt = new OpenFileDialog()
+        public static OpenFileDialog ImagePrompt = new()
         {
             Multiselect = true,
             Filter = "Images (*.jpg;*.jpeg;*.png;*.jfif)|*.jpg;*.jpeg;*.png;*.jfif"

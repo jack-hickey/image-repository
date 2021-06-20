@@ -11,13 +11,13 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
     {
         public string Data { get; set; } = "";
 
-        public string[] Tags { get; set; } = new string[] { };
+        public string[] Tags { get; set; } = Array.Empty<string>();
 
         public ImageData(string data)
         {
             try
             {
-                this.Data = data;
+                Data = data;
             }
             catch (Exception ex)
             {

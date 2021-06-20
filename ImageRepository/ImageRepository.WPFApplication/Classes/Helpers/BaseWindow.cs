@@ -31,16 +31,16 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
                 TextOptions.SetTextFormattingMode(this, TextFormattingMode.Ideal);
                 TextOptions.SetTextRenderingMode(this, TextRenderingMode.Auto);
 
-                this.Background = Application.Current.Resources["MaterialDesignPaper"] as Brush;
-                this.FontFamily = Application.Current.Resources["MaterialDesignFont"] as FontFamily;
+                Background = Application.Current.Resources["MaterialDesignPaper"] as Brush;
+                FontFamily = Application.Current.Resources["MaterialDesignFont"] as FontFamily;
 
-                this.Style = Application.Current.Resources["SmartWindow"] as Style;
+                Style = Application.Current.Resources["SmartWindow"] as Style;
 
-                this.WindowStyle = WindowStyle.None;
-                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                WindowStyle = WindowStyle.None;
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-                this.StateChanged += (_, __) => { this.UpdatePadding(); };
-                this.Initialized += (_, __) => { this.UpdatePadding(); };
+                StateChanged += (_, __) => { UpdatePadding(); };
+                Initialized += (_, __) => { UpdatePadding(); };
             }
             catch (Exception ex)
             {
@@ -52,7 +52,7 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
         {
             try
             {
-                this.Padding = this.WindowState == WindowState.Maximized
+                Padding = WindowState == WindowState.Maximized
                     ? new Thickness(SystemParameters.WindowResizeBorderThickness.Top + 3)
                     : new Thickness(0);
             }

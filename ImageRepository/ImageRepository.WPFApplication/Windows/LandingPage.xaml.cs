@@ -51,8 +51,8 @@ namespace ImageRepository.WPFApplication.Windows
         {
             try
             {
-                this.imgPreview.Source = image;
-                this.dhMain.IsOpen = true;
+                imgPreview.Source = image;
+                dhMain.IsOpen = true;
             }
             catch (Exception ex)
             {
@@ -64,19 +64,23 @@ namespace ImageRepository.WPFApplication.Windows
         {
             try
             {
-                this.ugImages.Children.Clear();
+                ugImages.Children.Clear();
 
                 List<ImageData> lstData = Repository.GetAllImages();
 
                 if (!string.IsNullOrWhiteSpace(tagName))
                 {
                     foreach (ImageData image in lstData.Where(x => x.Tags.Contains(tagName)))
-                        this.ugImages.Children.Add(new ImageInfo(image));
+                    {
+                        _ = ugImages.Children.Add(new ImageInfo(image));
+                    }
                 }
                 else
                 {
                     foreach (ImageData image in lstData.Where(x => !x.Tags.Any()))
-                        this.ugImages.Children.Add(new ImageInfo(image));
+                    {
+                        _ = ugImages.Children.Add(new ImageInfo(image));
+                    }
                 }
             }
             catch (Exception ex)
@@ -89,7 +93,7 @@ namespace ImageRepository.WPFApplication.Windows
         {
             try
             {
-                this.pnlTags.Children.Clear();
+                pnlTags.Children.Clear();
 
                 List<ImageData> lstData = Repository.GetAllImages();
 
@@ -97,10 +101,10 @@ namespace ImageRepository.WPFApplication.Windows
                 {
                     if (lstData.Any(x => x.Tags.Length < 1))
                     {
-                        TagControl control = new TagControl("Untagged");
-                        control.Click += (_, __) => { this.ChangeTag(""); };
+                        TagControl control = new("Untagged");
+                        control.Click += (_, __) => { ChangeTag(""); };
 
-                        this.pnlTags.Children.Add(control);
+                        _ = pnlTags.Children.Add(control);
                     }
                 }
             }
@@ -114,7 +118,7 @@ namespace ImageRepository.WPFApplication.Windows
         {
             try
             {
-                this.UpdateTagList();
+                UpdateTagList();
             }
             catch (Exception ex)
             {
@@ -129,7 +133,7 @@ namespace ImageRepository.WPFApplication.Windows
                 switch (e.Key)
                 {
                     case Key.Escape:
-                        this.dhMain.IsOpen = false;
+                        dhMain.IsOpen = false;
                         break;
                 }
             }

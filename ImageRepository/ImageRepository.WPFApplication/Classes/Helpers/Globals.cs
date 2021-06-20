@@ -16,7 +16,7 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
         {
             try
             {
-                MessageBox.Show(ex.ToString());
+                _ = MessageBox.Show(ex.ToString());
             }
             catch
             {
@@ -30,10 +30,10 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
             {
                 byte[] buffer = null;
 
-                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                using (FileStream fs = new(path, FileMode.Open, FileAccess.Read))
                 {
                     buffer = new byte[fs.Length];
-                    fs.Read(buffer, 0, (int)fs.Length);
+                    _ = fs.Read(buffer, 0, (int)fs.Length);
                 }
 
                 return Convert.ToBase64String(buffer);
@@ -48,8 +48,8 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
         {
             try
             {
-                BitmapImage biImg = new BitmapImage();
-                MemoryStream ms = new MemoryStream(data);
+                BitmapImage biImg = new();
+                MemoryStream ms = new(data);
                 biImg.BeginInit();
                 biImg.StreamSource = ms;
                 biImg.EndInit();

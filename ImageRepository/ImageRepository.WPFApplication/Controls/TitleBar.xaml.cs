@@ -51,14 +51,14 @@ namespace ImageRepository.WPFApplication.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.MyWindow = Window.GetWindow(this);
+            MyWindow = Window.GetWindow(this);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                SystemCommands.MinimizeWindow(this.MyWindow);
+                SystemCommands.MinimizeWindow(MyWindow);
             }
             catch (Exception ex)
             {
@@ -70,7 +70,7 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                SystemCommands.CloseWindow(this.MyWindow);
+                SystemCommands.CloseWindow(MyWindow);
             }
             catch (Exception ex)
             {
@@ -82,15 +82,15 @@ namespace ImageRepository.WPFApplication.Controls
         {
             try
             {
-                if (this.MyWindow.WindowState == WindowState.Maximized)
+                if (MyWindow.WindowState == WindowState.Maximized)
                 {
-                    SystemCommands.RestoreWindow(this.MyWindow);
-                    this.btnRestore.ToolTip = "Maximize";
+                    SystemCommands.RestoreWindow(MyWindow);
+                    btnRestore.ToolTip = "Maximize";
                 }
                 else
                 {
-                    SystemCommands.MaximizeWindow(this.MyWindow);
-                    this.btnRestore.ToolTip = "Restore";
+                    SystemCommands.MaximizeWindow(MyWindow);
+                    btnRestore.ToolTip = "Restore";
                 }
             }
             catch (Exception ex)
