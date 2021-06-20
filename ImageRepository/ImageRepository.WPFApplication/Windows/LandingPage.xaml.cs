@@ -1,5 +1,6 @@
 ﻿using ImageRepository.WPFApplication.Classes;
 using ImageRepository.WPFApplication.Classes.Helpers;
+using ImageRepository.WPFApplication.Controls;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,38 @@ namespace ImageRepository.WPFApplication.Windows
                         Repository.PostImage(new ImageData(Globals.GetFileRawData(path)));
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Globals.HandleError(ex);
+            }
+        }
+
+        private void UpdateTagList()
+        {
+            try
+            {
+                this.pnlTags.Children.Clear();
+
+                List<ImageData> lstData = Repository.GetAllImages();
+
+                if (lstData.Any())
+                {
+                    if (lstData.Any(x => x.Tags.Length < 1))
+                        this.pnlTags.Children.Add(new TagControl("Untagged"));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred updating tag list: {ex}");
+            }
+        }
+
+        private void BaseWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.UpdateTagList();
             }
             catch (Exception ex)
             {
