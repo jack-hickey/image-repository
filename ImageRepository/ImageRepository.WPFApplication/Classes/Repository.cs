@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ImageRepository.WPFApplication.Classes
 {
@@ -16,11 +17,18 @@ namespace ImageRepository.WPFApplication.Classes
             try
             {
                 List<ImageData> lstData = GetAllImages();
-                lstData.Add(data);
 
-                FileInfo dataFile = GetDataFile();
+                if (!lstData.Any(x => x.Data == data.Data))
+                {
+                    lstData.Add(data);
+                    FileInfo dataFile = GetDataFile();
 
-                File.WriteAllText(dataFile.FullName, JsonSerializer.Serialize(lstData));
+                    File.WriteAllText(dataFile.FullName, JsonSerializer.Serialize(lstData));
+                }
+                else
+                {
+                    MessageBox.Show("This image is already stored in your repository!");
+                }
             }
             catch (Exception ex)
             {
