@@ -38,7 +38,6 @@ namespace ImageRepository.WPFApplication.Controls
             try
             {
                 InitializeComponent();
-
                 this.TagName = tagName;
             }
             catch (Exception ex)

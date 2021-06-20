@@ -55,7 +55,10 @@
                     Margin="-22,22,0,0"
                     VerticalScrollBarVisibility="Auto">
 
-                    <StackPanel x:Name="pnlTags" Orientation="Horizontal" />
+                    <StackPanel
+                        x:Name="pnlTags"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal" />
                 </ScrollViewer>
             </Grid>
         </Grid>
