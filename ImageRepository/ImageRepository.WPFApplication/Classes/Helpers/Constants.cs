@@ -12,7 +12,7 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
         public static OpenFileDialog ImagePrompt = new OpenFileDialog()
         {
             Multiselect = true,
-            Filter = "Images (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"
+            Filter = "Images (*.jpg;*.jpeg;*.png;*.jfif)|*.jpg;*.jpeg;*.png;*.jfif"
         };
     }
 }

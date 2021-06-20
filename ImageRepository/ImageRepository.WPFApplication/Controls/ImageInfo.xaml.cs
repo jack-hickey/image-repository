@@ -1,6 +1,7 @@
 ﻿using ImageRepository.WPFApplication.Classes.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,9 @@ namespace ImageRepository.WPFApplication.Controls
     /// </summary>
     public partial class ImageInfo : UserControl
     {
-        public static DependencyProperty ImageProperty = DependencyProperty.Register("Image", typeof(ImageData), typeof(ImageInfo), new PropertyMetadata(new ImageData()));
+        public static DependencyProperty ImageProperty = DependencyProperty.Register("CurrentImage", typeof(ImageData), typeof(ImageInfo), new PropertyMetadata(new ImageData()));
 
-        public ImageData Image
+        public ImageData CurrentImage
         {
             get => (ImageData)GetValue(ImageProperty);
             set => SetValue(ImageProperty, value);
@@ -40,11 +41,37 @@ namespace ImageRepository.WPFApplication.Controls
             {
                 InitializeComponent();
 
-                this.Image = image;
+                this.CurrentImage = image;
             }
             catch (Exception ex)
             {
                 throw new Exception($"An error occurred creating instance: {ex}");
+            }
+        }
+
+        private void UpdateImage()
+        {
+            try
+            {
+                byte[] rawData = Convert.FromBase64String(this.CurrentImage.Data);
+
+                this.imgImage.Source = Globals.GetImage(rawData);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred updating image: {ex}");
+            }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.UpdateImage();
+            }
+            catch (Exception ex)
+            {
+                Globals.HandleError(ex);
             }
         }
     }

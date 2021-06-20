@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ImageRepository.WPFApplication.Classes.Helpers
 {
@@ -39,6 +41,24 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
             catch (Exception ex)
             {
                 throw new Exception($"An error occurred getting files raw data: {ex}");
+            }
+        }
+
+        public static ImageSource GetImage(byte[] data)
+        {
+            try
+            {
+                BitmapImage biImg = new BitmapImage();
+                MemoryStream ms = new MemoryStream(data);
+                biImg.BeginInit();
+                biImg.StreamSource = ms;
+                biImg.EndInit();
+
+                return biImg;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred getting image: {ex}");
             }
         }
     }
