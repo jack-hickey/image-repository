@@ -61,9 +61,14 @@ namespace ImageRepository.WPFApplication.Classes
                     Directory.CreateDirectory(directory);
 
                 if (!File.Exists(fullPath))
-                    _ = File.Create(fullPath);
-
-                return new FileInfo(fullPath);
+                {
+                    using (FileStream stream = File.Create(fullPath))
+                        return new FileInfo(fullPath);
+                }
+                else
+                {
+                    return new FileInfo(fullPath);
+                }
             }
             catch (Exception ex)
             {
