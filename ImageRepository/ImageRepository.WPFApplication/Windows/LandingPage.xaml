@@ -61,6 +61,12 @@
                         Orientation="Horizontal" />
                 </ScrollViewer>
             </Grid>
+
+            <UniformGrid
+                x:Name="ugImages"
+                Grid.Column="1"
+                VerticalAlignment="Top"
+                Columns="5" />
         </Grid>
     </Grid>
 </helpers:BaseWindow>

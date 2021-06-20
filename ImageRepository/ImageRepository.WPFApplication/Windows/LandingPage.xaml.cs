@@ -47,6 +47,29 @@ namespace ImageRepository.WPFApplication.Windows
             }
         }
 
+        private void ChangeTag(string tagName)
+        {
+            try
+            {
+                List<ImageData> lstData = Repository.GetAllImages();
+
+                if (!string.IsNullOrWhiteSpace(tagName))
+                {
+                    foreach (ImageData image in lstData.Where(x => x.Tags.Contains(tagName)))
+                        this.ugImages.Children.Add(new ImageInfo(image));
+                }
+                else
+                {
+                    foreach (ImageData image in lstData.Where(x => !x.Tags.Any()))
+                        this.ugImages.Children.Add(new ImageInfo(image));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred changing tag name: {ex}");
+            }
+        }
+
         private void UpdateTagList()
         {
             try
@@ -58,7 +81,12 @@ namespace ImageRepository.WPFApplication.Windows
                 if (lstData.Any())
                 {
                     if (lstData.Any(x => x.Tags.Length < 1))
-                        this.pnlTags.Children.Add(new TagControl("Untagged"));
+                    {
+                        TagControl control = new TagControl("Untagged");
+                        control.Click += (_, __) => { this.ChangeTag(""); };
+
+                        this.pnlTags.Children.Add(control);
+                    }
                 }
             }
             catch (Exception ex)

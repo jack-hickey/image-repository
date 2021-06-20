@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageRepository.WPFApplication.Classes.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,29 +17,30 @@ using System.Windows.Shapes;
 namespace ImageRepository.WPFApplication.Controls
 {
     /// <summary>
-    /// Interaction logic for TagControl.xaml
+    /// Interaction logic for ImageInfo.xaml
     /// </summary>
-    public partial class TagControl : Button
+    public partial class ImageInfo : UserControl
     {
-        public static DependencyProperty TagNameProperty = DependencyProperty.Register("TagName", typeof(string), typeof(TagControl), new PropertyMetadata(""));
+        public static DependencyProperty ImageProperty = DependencyProperty.Register("Image", typeof(ImageData), typeof(ImageInfo), new PropertyMetadata(new ImageData()));
 
-        public string TagName
+        public ImageData Image
         {
-            get => GetValue(TagNameProperty).ToString();
-            set => SetValue(TagNameProperty, value);
+            get => (ImageData)GetValue(ImageProperty);
+            set => SetValue(ImageProperty, value);
         }
 
-        public TagControl()
+        public ImageInfo()
         {
             InitializeComponent();
         }
 
-        public TagControl(string tagName)
+        public ImageInfo(ImageData image)
         {
             try
             {
                 InitializeComponent();
-                this.TagName = tagName;
+
+                this.Image = image;
             }
             catch (Exception ex)
             {

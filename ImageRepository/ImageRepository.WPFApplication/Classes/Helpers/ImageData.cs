@@ -24,5 +24,7 @@ namespace ImageRepository.WPFApplication.Classes.Helpers
                 throw new Exception($"An error occurred creating instance: {ex}");
             }
         }
+
+        public ImageData() { }
     }
 }
